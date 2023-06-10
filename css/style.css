@@ -1,0 +1,24 @@
+:root {
+    --color1: #3576AE;
+    --color2: #68AEC9;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.card {
+    border-color: var(--color2);
+    transition: transform .2s; /* Animation */
+    height: 100%; /* Ensure that all cards have the same height */
+}
+
+.card-link:hover .card {
+    transform: scale(1.05); /* (150% zoom - Note: if the zoom is too large, it will cause the page to scroll) */
+}
+
+
+.footer {
+    background-color: var(--color1);
+    color: var(--color4);
+}
