@@ -4,5 +4,8 @@ authors:
   - family-names: Pollin
     given-names: Christopher
     orcid: 0000-0002-4879-129X
-title: "Workshopreihe "Angewandte Generative KI in den (digitalen) Geisteswissenschaften""
+title: 'Workshopreihe "Angewandte Generative KI in den (digitalen) Geisteswissenschaften"'
 date-released: 2023-06-15
+version: 1.0
+License: CC-BY
+URL: https://chpollin.github.io/GM-DH
