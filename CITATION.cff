@@ -9,7 +9,7 @@ date-released: 2023-06-15
 version: 1.0
 License: CC-BY
 URL: https://chpollin.github.io/GM-DH
-description: This repository contains the workshop materials for 'GPT and Prompt Engineering for the (Digital) Humanities'. It includes presentation slides, code samples, and other resources used during the workshop.
+description: This repository contains the workshop materials for 'Angewandte Generative KI in den (digitalen) Geisteswissenschaften'. It includes presentation slides, code samples, and other resources used during the workshop.
 type: report
 keywords:
   - Generative AI
