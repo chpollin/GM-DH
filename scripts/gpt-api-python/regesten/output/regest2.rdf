@@ -1,0 +1,47 @@
+@prefix ri: <http://www.example.org/ontology/ri#> .
+@prefix ri-data: <http://www.example.org/data/ri#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<ri-data:FriedrichIII-RI_XIII_H_28_n_42> a ri:Document ;
+    rdfs:label "Friedrich III. - [RI XIII] H. 28 n. 42" ;
+    ri:hasIssued <ri-data:Complaint_FriedrichIII-RI_XIII_H_28_n_42> ;
+    crm:P4_has_time-span "1456-07-28"^^xsd:date ;
+    ri:isLocatedIn <ri-data:Wiener_Neustadt> .
+
+<ri-data:Complaint_FriedrichIII-RI_XIII_H_28_n_42> a ri:Complaint ;
+    ri:concernsRights <ri-data:MargraveAlbrechtBrandenburg>,
+                      <ri-data:MargraveFriedrichII>,
+                      <ri-data:MargraveJohann>,
+                      <ri-data:MargraveFriedrichJr> ;
+    ri:detailsOfComplaint "Complaint about infringement of rights at Nuremberg land court despite privileges and confirmations" ;
+    ri:decisionDetails "Decision by Friedrich III clarifying the impact of privileges on rights at Nuremberg land court, stating that all privileges granted or to be granted that could diminish or nullify the rights and freedoms of the Margraves at the land court should be harmless" ;
+    ri:isLocatedIn <ri-data:Nuremberg> ;
+    crm:P70_documents <ri-data:FriedrichIII> .
+
+<ri-data:MargraveAlbrechtBrandenburg> a ri:Person ;
+    rdfs:label "Albrecht von Brandenburg" ;
+    ri:hasTitle "Mgf." .
+
+<ri-data:MargraveFriedrichII> a ri:Person ;
+    rdfs:label "Friedrich II." ;
+    ri:hasTitle "Mgf." .
+
+<ri-data:MargraveJohann> a ri:Person ;
+    rdfs:label "Johann" ;
+    ri:hasTitle "Mgf." .
+
+<ri-data:MargraveFriedrichJr> a ri:Person ;
+    rdfs:label "Friedrich (d. J.)" ;
+    ri:hasTitle "Mgf." .
+
+<ri-data:Nuremberg> a ri:City ;
+    rdfs:label "Nürnberg" ;
+    ri:isPartOf <ri-data:Franconia> .
+
+<ri-data:Franconia> a ri:Region ;
+    rdfs:label "Franken" .
+
+<ri-data:Wiener_Neustadt> a ri:City ;
+    rdfs:label "Wiener Neustadt" .

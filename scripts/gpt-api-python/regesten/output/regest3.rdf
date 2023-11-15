@@ -1,0 +1,39 @@
+@prefix ri: <http://www.example.org/ontology/ri#> .
+@prefix ri-data: <http://www.example.org/data/ri#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<ri-data:FriedrichIII-RI_XIII_H_28_n_45> a ri:Document ;
+    rdfs:label "Friedrich III. - [RI XIII] H. 28 n. 45" ;
+    ri:hasIssued <ri-data:Privilege_FriedrichIII-RI_XIII_H_28_n_45> ;
+    crm:P4_has_time-span "1456-08-14"^^xsd:date ;
+    ri:isLocatedIn <ri-data:Wiener_Neustadt> .
+
+<ri-data:Privilege_FriedrichIII-RI_XIII_H_28_n_45> a ri:Privilege ;
+    ri:hasGrantedPrivilege <ri-data:GeorgEhenheim> ;
+    ri:detailsOfPrivilege "Permission to Georg von Ehenheim and his heirs to hunt unrestrictedly in the Weiﬂenburger Reichsforst, with the obligation to deliver a deer to the imperial or royal court whenever the Emperor and his successors are in this region of the empire" ;
+    ri:isLocatedIn <ri-data:Weissenburger_Reichsforst> ;
+    crm:P70_documents <ri-data:FriedrichIII> .
+
+<ri-data:GeorgEhenheim> a ri:Person ;
+    rdfs:label "Georg von Ehenheim" ;
+    ri:hasTitle "Ritter" .
+
+<ri-data:Weissenburger_Reichsforst> a ri:Forest ;
+    rdfs:label "Weiﬂenburger Reichsforst" ;
+    ri:isPartOf <ri-data:Weissenburg> .
+
+<ri-data:Weissenburg> a ri:City ;
+    rdfs:label "Weiﬂenburg" .
+
+<ri-data:Wiener_Neustadt> a ri:City ;
+    rdfs:label "Wiener Neustadt" .
+
+<ri-data:UlricusWeltzli> a ri:Person ;
+    rdfs:label "Ulricus Weltzli" ;
+    ri:hasTitle "Vicecanc." .
+
+<ri-data:StephanusKolbeck> a ri:Person ;
+    rdfs:label "Stephanus Kolbeck" ;
+    ri:hasTitle "Registrator" .

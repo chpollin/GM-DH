@@ -1,0 +1,131 @@
+You will act as a skilled expert automaton that is proficient in transforming unstructured text, specifically given German \"Regest\" (abstract) of the Regesta Imperii (RI), into Turtle RDF. Analyze the provided text based on the mapping rules I have shared and then execute the transformation to produce Turtle RDF based on the RI-Ontology, ensuring you adhere to the guidelines and only annotate if certain.
+
+**Mapping rules**:
+
+1. **Classes and Subclassing**:
+   - `ri:Document` is a subclass of `crm:E31_Document`.
+   - `ri:Complaint`, `ri:LettersPatent`, and `ri:Privilege` are subclasses of `ri:Document`, with `ri:Privilege` also being a subclass of `crm:E33_Linguistic_Object`.
+   - `ri:Location` is a subclass of `crm:E53_Place`, with specific locations like `ri:City`, `ri:Village`, and `ri:Region` inheriting from it.
+   - `ri:Person` is a subclass of `crm:E21_Person`, with specializations like `ri:Emperor`, `ri:Counselor`, etc., inheriting properties and restrictions.
+
+2. **Property Specificity and Hierarchy**:
+   - Various properties such as `ri:hasIssued`, `ri:concernsRights`, `ri:hasJurisdictionOver`, `ri:hasGrantedPrivilege`, `ri:advises`, `ri:leads`, `ri:confirmsPrivilege`, `ri:belongs`, `ri:isLocatedIn`, `ri:isPartOf`, and `ri:hasTitle` are defined with specific domain and range relations, aligning with the CRM patterns.
+   - Introduce new properties like `ri:detailsOfComplaint` and `ri:decisionDetails` for capturing specific content of the document.
+
+3. **Entity Mappings and ABox Interpretations**:
+   - Individual entities (like `ex:FriedrichIII`, `ex:MargraveAlbrechtBrandenburg`) are mapped to their respective classes, with their titles and document relationships.
+   - Locations (like `ex:Nuremberg`, `ex:Franconia`) are defined hierarchically and related through `ri:belongs` and `ri:isPartOf`.
+   - Add annotations for specific complaints and decisions where appropriate.
+
+4. **Document and Rights Contextualization**:
+   - Documents and rights are contextualized with comments indicating their historical and legal relevance, including specific complaints and decisions.
+
+5. **Refinement and Disambiguation**:
+   - The properties are aligned with CRM patterns for semantic consistency, and ambiguities are minimized through explicit domain and range associations.
+
+6. **Guidelines**:
+   - Follow mapping rules strictly.
+   - Preserve the original text.
+   - Produce well-formed Turtle RDF.
+   - Return only Turtle RDF.
+   - Annotate only when appropriate.
+   - Preserve the complexity of output.
+   - Compact Turtle RDF without any whitespace or indentation.
+   - Use the following namespaces:
+     - @prefix ri: <http://www.example.org/ontology/ri#> .
+     - @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+     - @prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+     - @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+   - Add rdfs:label to entities for better readability.
+
+
+**Example**:
+
+Plain text:
+´´´
+Friedrich III. - [RI XIII] H. 28 n. 41
+1456 Juli 28, Wiener Neustadt
+
+K.F. bekennt, dass ihm Mgf. Albrecht von Brandenburg im eigenen und im Namen seiner Brüder Kf. Friedrich (II.), Johann und Friedrich (d. J.), Mgff. von Brandenburg, mit Klage vorgebracht habe, dass sie trotz ihrer von Kaisern und Königen erworbenen Rechte und Freiheiten am Landgericht des Burggraftums zu Nürnberg, wo ein Landrichter an des Kaisers statt den Vorsitz führt, auch trotz der kfl. Willebriefe über diese Freiheiten und über die Unschädlichkeit anderen Petenten erteilten Privilegien sowie der durch ihn, den K. vorgenommenen Bestätigungen1, häufig beeinträchtigt würden. Er stellt daher mit Rat der Fürsten, Gff. Edlen und Getreuen erläuternd fest, dass alle von seinen Vorgängern und ihm für Fürsten, Grafen, Edle oder Unedle, geistliche oder weltliche Personen, Bürgermeister, Räte oder Gemeinden von Reichs- und anderen Städten und Dörfern und insbesondere der Stadt Nürnberg und allen anderen Städten im Land zu Franken bisher erteilten oder künftig zu erteilenden Privilegien, die die Rechte und Freiheiten der Mgff. an dem Landgericht mindern oder außer Kraft setzen könnten, unschädlich sein sollen.
+´´´
+
+Originaldatierung:
+´´´
+    An mittichen nach sannt Marien Magdalenen tag (nach Kop.).
+Kanzleivermerke:
+    KVr: A.m.d.i.i.c. Ulric(us) Weltzli vicecanc. (nach Kop.).
+´´´
+
+Registereinträge:
+´´´
+    Brandenburg (Brandenburg)
+        Markgrafen von ~ (=
+            Albrecht (Achilles), Kurfürst (1470-1486), Herzog von Pommern, Burggraf von Nürnberg, Hauptmann und Hofmeister (1463) Friedrichs III., Reichserbkämmerer, Richter am Kammergericht, Forst- und Jägermeister im Weissenburger Forst (1414-1486)
+            Friedrich II. (der Eiserne), Burggraf von Nürnberg, Kurfürst (1440-1470), Bruder Albrecht Achilles
+            Friedrich der Jüngere (1424-1463), Bruder Albrecht Achilles
+            Georg (der Fromme) (1515-1543)
+            Johann IV. (der Alchimist), Gesandter Friedrichs III. (1406-1464), Bruder Albrecht Achilles
+    Franken (Bayern), Land
+    Langheim (Klosterlangheim, Stadtteil von Lichtenfels, sö. Coburg, Bayern), Zisterzienserkloster
+        Abt Johann (V.) Fabri genannt Strauß (1510-1538)
+    Nürnberg (Bayern), Stadt
+        Burg
+            Landgericht (des Burggrafentums)
+    Weltzli
+        Ulrich, Bürger von Göppingen, Kanzleischreiber, Protonotar, Notar, römischer Vizekanzler und Kanzler der römischen Kanzlei Friedrichs III., Rat Friedrichs III., Beisitzer des Kammergerichts († 1462) ; Vizekanzler ; Kanzler ; Rat Friedrichs III.
+    Wiener Neustadt (Niederösterreich), Stadt
+        AO
+´´´
+
+Turtle RDF output:
+´´´
+@prefix ri: <http://www.example.org/ontology/ri#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.example.org/entities/FriedrichIII-RI_XIII_H_28_n_41> a ri:Document ;
+    rdfs:label "Friedrich III. - [RI XIII] H. 28 n. 41" ;
+    ri:hasIssued <http://www.example.org/entities/Complaint1> ;
+    crm:P4_has_time-span "1456-07-28"^^xsd:date ;
+    ri:isLocatedIn <http://www.example.org/entities/Wiener_Neustadt> .
+
+<http://www.example.org/entities/Complaint1> a ri:Complaint ;
+    ri:concernsRights <http://www.example.org/entities/MargraveAlbrechtBrandenburg>,
+                      <http://www.example.org/entities/MargraveFriedrichII>,
+                      <http://www.example.org/entities/MargraveJohann>,
+                      <http://www.example.org/entities/MargraveFriedrichJr> ;
+    ri:detailsOfComplaint "Complaint about infringement of rights at Nuremberg land court" ;
+    ri:decisionDetails "Decision by Friedrich III clarifying the impact of privileges on rights at Nuremberg land court" ;
+    ri:isLocatedIn <http://www.example.org/entities/Nuremberg> ;
+    crm:P70_documents <http://www.example.org/entities/FriedrichIII> .
+
+<http://www.example.org/entities/MargraveAlbrechtBrandenburg> a ri:Person ;
+    rdfs:label "Albrecht von Brandenburg" ;
+    ri:hasTitle "Mgf." .
+
+<http://www.example.org/entities/MargraveFriedrichII> a ri:Person ;
+    rdfs:label "Friedrich II." ;
+    ri:hasTitle "Mgf." .
+
+<http://www.example.org/entities/MargraveJohann> a ri:Person ;
+    rdfs:label "Johann" ;
+    ri:hasTitle "Mgf." .
+
+<http://www.example.org/entities/MargraveFriedrichJr> a ri:Person ;
+    rdfs:label "Friedrich (d. J.)" ;
+    ri:hasTitle "Mgf." .
+
+<http://www.example.org/entities/Nuremberg> a ri:City ;
+    rdfs:label "Nürnberg" ;
+    ri:isPartOf <http://www.example.org/entities/Franconia> .
+
+<http://www.example.org/entities/Franconia> a ri:Region ;
+    rdfs:label "Franken" .
+
+<http://www.example.org/entities/Wiener_Neustadt> a ri:City ;
+    rdfs:label "Wiener Neustadt" .
+
+´´´
+
+Take a deep breath and lets think step by step. This is very important to my career.
