@@ -106,39 +106,59 @@ shacl_shapes = """
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-# SHACL shapes for ri:Document
+# SHACL shapes for ri:Document and its subclasses
 ri:DocumentShape
     a sh:NodeShape ;
     sh:targetClass ri:Document ;
     sh:property [
         sh:path ri:hasIssued ;
-        sh:minCount 0 ;
+        sh:or ( [ sh:class ri:Document ] [ sh:class ri:Complaint ] [ sh:class ri:Privilege ] ) ; # Allow linking to Document or its subclasses
+        sh:minCount 1 ;
     ] ;
     sh:property [
         sh:path crm:P4_has_time-span ;
         sh:datatype xsd:date ;
-        sh:minCount 0 ;
+        sh:minCount 1 ;        # Making it mandatory
     ] ;
     sh:property [
         sh:path ri:isLocatedIn ;
-        sh:or ( [ sh:class ri:City ] [ sh:class ri:Location ] [ sh:class ri:Region ] ) ;
-        sh:minCount 0 ;
+        sh:or ( [ sh:class ri:City ] [ sh:class ri:Location ] [ sh:class ri:Region ] [ sh:class ri:Forest ]) ; # Including ri:Forest
+        sh:minCount 1 ;        # Making it mandatory if location is always specified
     ] .
 
-# SHACL shapes for ri:Person
+# Additional properties for ri:Complaint and ri:Privilege
+ri:ComplaintShape
+    a sh:NodeShape ;
+    sh:targetClass ri:Complaint ;
+    sh:property [
+        sh:path ri:detailsOfComplaint ;
+        sh:datatype rdfs:Literal ;
+        sh:minCount 1 ;
+    ] ;
+    sh:property [
+        sh:path ri:decisionDetails ;
+        sh:datatype rdfs:Literal ;
+        sh:minCount 1 ;
+    ] .
+
+ri:PrivilegeShape
+    a sh:NodeShape ;
+    sh:targetClass ri:Privilege ;
+    sh:property [
+        sh:path ri:detailsOfPrivilege ;
+        sh:datatype rdfs:Literal ;
+        sh:minCount 1 ;
+    ] .
+
+# SHACL shape for ri:Person
 ri:PersonShape
     a sh:NodeShape ;
     sh:targetClass ri:Person ;
     sh:property [
         sh:path ri:hasTitle ;
         sh:datatype rdfs:Literal ;
-        sh:minCount 0 ;
-    ] ;
-    sh:property [
-        sh:path ri:concernsRights ;
-        sh:minCount 0 ;
+        sh:minCount 1 ;  # Making it mandatory if every person has a title
     ] .
-
 """
 
 # Replace with your new API key
@@ -174,7 +194,8 @@ def validate_rdf_with_shacl(rdf_content, shacl_shapes):
         shapes_graph = rdflib.Graph()
         shapes_graph.parse(data=shacl_shapes, format="turtle")
 
-        conforms, results_graph, results_text = pyshacl.validate(data_graph, shacl_graph=shapes_graph, data_graph_format='turtle', shacl_graph_format='turtle')
+        conforms, results_graph, results_text = pyshacl.validate(data_graph, shacl_graph=shapes_graph, 
+                                                                 data_graph_format='turtle', shacl_graph_format='turtle')
 
         # Return both the conformity status and the results text
         return conforms, results_text

@@ -32,7 +32,7 @@
 
 <ri-data:UlricusWeltzli> a ri:Person ;
     rdfs:label "Ulricus Weltzli" ;
-    ri:hasTitle "Vicecanc." .
+    ri:hasTitle "Vizekanzler" .
 
 <ri-data:StephanusKolbeck> a ri:Person ;
     rdfs:label "Stephanus Kolbeck" ;
