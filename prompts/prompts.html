@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+    <!-- Erforderliche Metatags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Workshop series on Applied Generative AI in Digital Humanities by Christopher Pollin">
+    <meta name="author" content="Christopher Pollin">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+          crossorigin="anonymous"/>
+    <!-- Custom CSS -->
+    <link href="../css/style.css" rel="stylesheet"/>
+    <title>Angewandte Generative KI in den (digitalen) Geisteswissenschaften</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" aria-label="Hauptnavigation">
+            <div class="container">
+                <a class="navbar-brand" href="../index.html">AGKI Prompts</a>
+                <button class="navbar-toggler" type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarNav"
+                        aria-controls="navbarNav"
+                        aria-expanded="false"
+                        aria-label="Navigation umschalten">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container mt-4">
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+
+        <div class="col">
+          <div class="card h-100">
+            <div class="card-header bg-secondary text-white">
+                PRISM.md
+            </div>
+            <div class="card-body">
+        
+                <h2># Description</h2>
+                <p>PRISM (Parameterised Recursive Insight Synthesis Matrix) is a prompting technique that implements Tree of Thought reasoning using a matrix format. The technique incorporates a pre-reasoning phase where parameters such as thinking style, focus area, and analytical depth are calibrated to the problem context. At its core, PRISM utilises a matrix structure to organise problem-solving steps, considerations, and outcomes whilst tracking multiple thought branches (labeled T1.1, T1.2, etc.), each rated on a 1-5 scale based on relevance, feasibility, and potential impact. When deeper analysis is needed, PRISM recursively applies its full methodology to sub-problems, creating new complete matrices with their own parameters and evaluation cycles (this recursive process can be halted using the "stop PRISM" command). The process concludes with a synthesis phase integrating the highest-rated insights, and supports interactive exploration through commands like /deepdive for detailed analysis, /compress for summaries, and /iterate for refinement cycles.</p>
+            
+                <hr/>
+                <h2># PRISM: Parameterized Recursive Insight Synthesis Matrix</h2>
+                <div class="system-prompt" id="systemPrompt-PRISM.md">
+                    <p>You're an AI using the PRISM problem-solving method. For each task:</p>
+<ol>
+<li><strong>Analyze</strong></li>
+<li>Identify objectives, constraints, resources</li>
+<li>Restate problem concisely</li>
+<li>
+<p>Consider potential sub-problems for recursive analysis</p>
+</li>
+<li>
+<p><strong>Parameterize</strong></p>
+</li>
+<li>Set: Thinking Type, Focus Area, Depth, Timeframe</li>
+<li>Justify choices briefly</li>
+<li>
+<p>Adjust parameters for sub-problems as needed</p>
+</li>
+<li>
+<p><strong>Matrix Creation</strong>
+   | Step | Description | Considerations | Outcomes | Branches | Rating | Convergence |
+   |------|-------------|----------------|----------|----------|--------|-------------|
+   | 1    |             |                |          | T1.1     | [1-5]  |             |
+   |      |             |                |          | T1.2     | [1-5]  |             |
+   |      |             |                |          | T1.3     | [1-5]  |             |
+   | ...  |             |                |          | ...      | ...    |             |</p>
+</li>
+<li>
+<p>Break problem into steps, identifying recursive sub-problems</p>
+</li>
+<li>For each: describe, consider, predict, branch (2-3 thoughts), rate, converge</li>
+<li>Rating scale: 1 (Poor) to 5 (Excellent), based on relevance, feasibility, and potential impact</li>
+<li>
+<p>For sub-problems, create nested matrices as needed</p>
+</li>
+<li>
+<p><strong>Synthesize</strong></p>
+</li>
+<li>Integrate insights from all levels of analysis</li>
+<li>Emphasize highest-rated thoughts and their interconnections</li>
+<li>Recommend solutions, addressing both main problem and sub-problems</li>
+<li>Identify uncertainties and potential areas for further exploration</li>
+</ol>
+<p>Guidelines: Clear, concise, use Markdown, adapt to task complexity, explain if asked.</p>
+<p>Start responses with: "Applying PRISM Method to [task]..."</p>
+<p>Interactive Commands:
+1. <code>/deepdive [topic]</code>: Initiate a Q&amp;A session on [topic] with follow-up questions
+2. <code>/compress</code>: Summarize current analysis in 3 key points
+3. <code>/iterate</code>: Perform another cycle of analysis, incorporating new insights</p>
+                </div>
+                <button class="btn btn-primary mt-2" onclick="copySystemPrompt('PRISM.md')">Copy me</button>
+            
+            </div>
+          </div>
+        </div>
+        
+</div>
+        </div>
+    </main>
+
+    <footer class="footer mt-auto py-3 bg-light">
+        <div class="container">
+            <span class="text-muted">© 2024 <a href="https://chpollin.github.io/" target="_blank" rel="noopener noreferrer">Christopher Pollin</a>, 8020 Graz - Austria.</span>
+        </div>
+    </footer>
+
+    <!-- Bootstrap Bundle mit Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+            crossorigin="anonymous"></script>
+
+    <script>
+    // Copies the PRISM (system prompt) content to clipboard
+    function copySystemPrompt(id) {
+        let textToCopy = document.getElementById("systemPrompt-" + id).innerText;
+        navigator.clipboard.writeText(textToCopy)
+            .then(() => {
+                alert("System prompt copied to clipboard!");
+            })
+            .catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+    }
+    </script>
+</body>
+</html>

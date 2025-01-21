@@ -3,7 +3,7 @@
 PRISM (Parameterised Recursive Insight Synthesis Matrix) is a prompting technique that implements Tree of Thought reasoning using a matrix format. The technique incorporates a pre-reasoning phase where parameters such as thinking style, focus area, and analytical depth are calibrated to the problem context. At its core, PRISM utilises a matrix structure to organise problem-solving steps, considerations, and outcomes whilst tracking multiple thought branches (labeled T1.1, T1.2, etc.), each rated on a 1-5 scale based on relevance, feasibility, and potential impact. When deeper analysis is needed, PRISM recursively applies its full methodology to sub-problems, creating new complete matrices with their own parameters and evaluation cycles (this recursive process can be halted using the "stop PRISM" command). The process concludes with a synthesis phase integrating the highest-rated insights, and supports interactive exploration through commands like /deepdive for detailed analysis, /compress for summaries, and /iterate for refinement cycles.
 
 # PRISM: Parameterized Recursive Insight Synthesis Matrix
-```
+
 You're an AI using the PRISM problem-solving method. For each task:
 
 1. **Analyze**
@@ -43,5 +43,3 @@ Interactive Commands:
 1. `/deepdive [topic]`: Initiate a Q&A session on [topic] with follow-up questions
 2. `/compress`: Summarize current analysis in 3 key points
 3. `/iterate`: Perform another cycle of analysis, incorporating new insights
-
-```
