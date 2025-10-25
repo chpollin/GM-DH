@@ -27,7 +27,8 @@ section h3 {
 
 .card-img-top {
     aspect-ratio: 16 / 9;
-    object-fit: cover;
+    object-fit: contain;
+    background-color: #f8f9fa;
 }
 
 .card-body {
@@ -40,26 +41,9 @@ section h3 {
     font-size: 1.1rem;
     line-height: 1.4;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    min-height: 2.8rem;
-    margin-bottom: 0.75rem;
-}
-
-.card-meta {
-    font-size: 0.875rem;
-    color: #6c757d;
-    margin-bottom: 0.5rem;
-}
-
-.card-meta-item {
-    display: inline-block;
-}
-
-.card-meta-separator {
-    margin: 0 0.25rem;
-    color: #adb5bd;
 }
 
 .card-link:hover .card {
