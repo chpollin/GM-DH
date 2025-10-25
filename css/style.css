@@ -7,6 +7,16 @@ body {
     font-family: Arial, sans-serif;
 }
 
+section h3 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--color1);
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color2);
+}
+
 .card {
     border-color: var(--color2);
     transition: transform .2s; /* Animation */
