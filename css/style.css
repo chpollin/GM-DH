@@ -11,12 +11,101 @@ body {
     border-color: var(--color2);
     transition: transform .2s; /* Animation */
     height: 100%; /* Ensure that all cards have the same height */
+    display: flex;
+    flex-direction: column;
+}
+
+.card-img-top {
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.card-title {
+    font-size: 1.1rem;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 2.8rem;
+    margin-bottom: 0.75rem;
+}
+
+.card-meta {
+    font-size: 0.875rem;
+    color: #6c757d;
+    margin-bottom: 0.5rem;
+}
+
+.card-meta-item {
+    display: inline-block;
+}
+
+.card-meta-separator {
+    margin: 0 0.25rem;
+    color: #adb5bd;
 }
 
 .card-link:hover .card {
     transform: scale(1.05); /* (150% zoom - Note: if the zoom is too large, it will cause the page to scroll) */
 }
 
+/* Sticky Jahr-Navigation */
+.year-nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.year-link {
+    text-decoration: none;
+    color: var(--color1);
+    font-weight: 500;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.year-link:hover {
+    background-color: rgba(53, 118, 174, 0.1);
+    color: var(--color1);
+}
+
+/* Nach-oben-Button */
+#back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--color1);
+    color: white;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s, background-color 0.2s;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+
+#back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+#back-to-top:hover {
+    background-color: var(--color2);
+}
 
 .footer {
     background-color: var(--color1);
