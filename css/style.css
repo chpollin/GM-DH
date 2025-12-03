@@ -65,21 +65,81 @@ section h3 {
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%);
+    border-bottom: 3px solid var(--color2);
+}
+
+.year-nav .container {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.year-nav .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color1);
+    text-decoration: none;
+    margin-right: 2rem;
 }
 
 .year-link {
     text-decoration: none;
     color: var(--color1);
-    font-weight: 500;
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
-    transition: background-color 0.2s;
+    font-weight: 600;
+    font-size: 1.05rem;
+    padding: 0.6rem 1rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    position: relative;
+}
+
+.year-link::after {
+    content: '·';
+    position: absolute;
+    right: -0.75rem;
+    color: #dee2e6;
+    font-weight: 400;
+}
+
+.year-link:last-child::after {
+    content: '';
 }
 
 .year-link:hover {
-    background-color: rgba(53, 118, 174, 0.1);
-    color: var(--color1);
+    background-color: var(--color2);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(53, 118, 174, 0.2);
+}
+
+.year-link.active {
+    background-color: var(--color1);
+    color: white;
+    box-shadow: 0 2px 6px rgba(53, 118, 174, 0.3);
+}
+
+/* Mobile Navigation Optimizations */
+@media (max-width: 576px) {
+    .year-nav .container {
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+    }
+
+    .year-link {
+        font-size: 0.95rem;
+        padding: 0.5rem 0.75rem;
+        min-width: 44px;
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .year-link::after {
+        right: -0.5rem;
+    }
 }
 
 /* Nach-oben-Button */
