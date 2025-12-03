@@ -1,6 +1,7 @@
 :root {
     --color1: #3576AE;
     --color2: #68AEC9;
+    --color-footer-text: #ffffff;
 }
 
 body {
@@ -19,10 +20,11 @@ section h3 {
 
 .card {
     border-color: var(--color2);
-    transition: transform .2s; /* Animation */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
     height: 100%; /* Ensure that all cards have the same height */
     display: flex;
     flex-direction: column;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .card-img-top {
@@ -46,8 +48,16 @@ section h3 {
     overflow: hidden;
 }
 
-.card-link:hover .card {
-    transform: scale(1.05); /* (150% zoom - Note: if the zoom is too large, it will cause the page to scroll) */
+.card-link:hover .card,
+.card-link:focus .card {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+.card-link:focus {
+    outline: 2px solid var(--color1);
+    outline-offset: 4px;
+    border-radius: 4px;
 }
 
 /* Sticky Jahr-Navigation */
@@ -101,7 +111,41 @@ section h3 {
     background-color: var(--color2);
 }
 
+/* Video Link Styling */
+.video-link {
+    color: var(--color1);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 2px solid var(--color2);
+    transition: border-color 0.2s ease;
+}
+
+.video-link:hover {
+    border-bottom-color: var(--color1);
+    color: var(--color1);
+}
+
+/* Mobile Optimizations */
+@media (max-width: 576px) {
+    .card-title {
+        font-size: 1rem;
+        -webkit-line-clamp: 4;
+    }
+
+    .card-text {
+        font-size: 0.9rem;
+    }
+
+    section h3 {
+        font-size: 1.5rem;
+    }
+
+    .navbar-brand {
+        font-size: 1rem;
+    }
+}
+
 .footer {
     background-color: var(--color1);
-    color: var(--color4);
+    color: var(--color-footer-text);
 }
