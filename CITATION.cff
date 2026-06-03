@@ -5,9 +5,9 @@ authors:
     given-names: Christopher
     orcid: 0000-0002-4879-129X
 title: 'Workshopreihe "Angewandte Generative KI in den (digitalen) Geisteswissenschaften"'
-date-released: 2023-06-15
-version: 1.0
-License: CC-BY
+date-released: 2026-06-03
+version: 1.3.0
+license: CC-BY-4.0
 URL: https://chpollin.github.io/GM-DH
 description: This repository contains the workshop materials for 'Angewandte Generative KI in den (digitalen) Geisteswissenschaften'. It includes presentation slides, code samples, and other resources used during the workshop.
 type: report
