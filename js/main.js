@@ -46,7 +46,6 @@ function updateActiveNavLink() {
     const navLinks = document.querySelectorAll('.year-link');
 
     if (sections.length === 0) {
-        console.log('No sections found!');
         return;
     }
 
@@ -75,7 +74,6 @@ function updateActiveNavLink() {
         const href = link.getAttribute('href');
         if (href === `#${currentSection}`) {
             link.classList.add('active');
-            console.log('Active section:', currentSection);
         }
     });
 }
@@ -83,7 +81,4 @@ function updateActiveNavLink() {
 // Initiale Aktivierung beim Laden
 document.addEventListener('DOMContentLoaded', () => {
     updateActiveNavLink();
-    const sections = document.querySelectorAll('section[id]');
-    console.log('Scroll Spy initialized. Found sections:', sections.length);
-    sections.forEach(s => console.log('Section ID:', s.id));
 });

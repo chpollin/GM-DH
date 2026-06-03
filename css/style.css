@@ -140,6 +140,23 @@ section h3 {
     .year-link::after {
         right: -0.5rem;
     }
+
+    .card-title {
+        font-size: 1rem;
+        -webkit-line-clamp: 4;
+    }
+
+    .card-text {
+        font-size: 0.9rem;
+    }
+
+    section h3 {
+        font-size: 1.5rem;
+    }
+
+    .navbar-brand {
+        font-size: 1rem;
+    }
 }
 
 /* Nach-oben-Button */
@@ -183,26 +200,6 @@ section h3 {
 .video-link:hover {
     border-bottom-color: var(--color1);
     color: var(--color1);
-}
-
-/* Mobile Optimizations */
-@media (max-width: 576px) {
-    .card-title {
-        font-size: 1rem;
-        -webkit-line-clamp: 4;
-    }
-
-    .card-text {
-        font-size: 0.9rem;
-    }
-
-    section h3 {
-        font-size: 1.5rem;
-    }
-
-    .navbar-brand {
-        font-size: 1rem;
-    }
 }
 
 .footer {
