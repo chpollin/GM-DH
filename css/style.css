@@ -206,3 +206,9 @@ section h3 {
     background-color: var(--color1);
     color: var(--color-footer-text);
 }
+
+#videos .card-title {
+    display: block;
+    -webkit-line-clamp: unset;
+    overflow: visible;
+}
