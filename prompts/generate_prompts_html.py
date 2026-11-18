@@ -89,7 +89,7 @@ template_html = f"""<!doctype html>
 
     <footer class="footer mt-auto py-3 bg-light">
         <div class="container">
-            <span class="text-muted">© 2025 <a href="https://chpollin.github.io/" target="_blank" rel="noopener noreferrer">Christopher Pollin</a>, 8020 Graz - Austria.</span>
+            <span class="text-muted">© 2025 <a href="https://chpollin.github.io/" target="_blank" rel="noopener noreferrer">Christopher Pollin</a>. Impressum: <a href="https://dhcraft.org/imprint/">https://dhcraft.org/imprint/</a></span>
         </div>
     </footer>
 
